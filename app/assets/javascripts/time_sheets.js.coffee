@@ -129,6 +129,6 @@ $ ->
     if el.val().length > 0 && el.val() != el.data('current-day')
       window.location.href = el.data('jump-url') + el.val()
 
-  $('click.jump-date-starter').on 'click', (event) ->
+  $('.jump-date-starter').on 'click', (event) ->
     $('.jump-date').data('pickadate').open()
     event.stopPropagation()
