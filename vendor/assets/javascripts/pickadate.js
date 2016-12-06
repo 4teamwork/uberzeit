@@ -1,4 +1,5 @@
 //= require pickadate/picker
 //= require pickadate/picker.date
 //= require pickadate/picker.time
-//= require_tree ./pickadate
+//= require pickadate/config.js
+//= require pickadate/de_DE.js

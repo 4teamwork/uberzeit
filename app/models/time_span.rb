@@ -35,38 +35,55 @@ class TimeSpan < ActiveRecord::Base
 
   scope_date :date
 
-  scope :for_team,          ->(team) { where(user_id: User.in_teams(team)) }
-  scope :for_user,          ->(user) { where(user_id: user) }
+  scope :for_team, ->(team) { where(user_id: User.in_teams(team)) }
+  scope :for_user, ->(user) { where(user_id: user) }
 
-  scope :exclude_vacation_adjustments,      joins(:time_type)
-                                              .where('NOT (time_spanable_type = ? AND time_types.is_vacation = ?)', Adjustment.model_name, true)
+  scope :exclude_vacation_adjustments, -> do
+    joins(:time_type).
+      where.not(time_spanable_type: Adjustment.to_s,
+                time_types: { is_vacation: true })
+  end
 
-  scope :absences_with_adjustments, where(time_spanable_type: %w[Absence Adjustment])
-                                      .exclude_vacation_adjustments
+  scope :absences_with_adjustments, -> do
+    where(time_spanable_type: %w[Absence Adjustment])
+      .exclude_vacation_adjustments
+  end
 
-  scope :absences,                  where(time_spanable_type: Absence.model_name)
+  scope :absences, -> { where(time_spanable_type: Absence.to_s) }
 
-  scope :working_time,              joins(:time_type)
-                                      .where(time_types: {exclude_from_calculation: false})
-                                      .exclude_vacation_adjustments
+  scope :working_time, -> do
+    joins(:time_type)
+      .where(time_types: {exclude_from_calculation: false})
+      .exclude_vacation_adjustments
+  end
 
-  scope :effective_working_time,    where(time_spanable_type: TimeEntry.model_name)
-                                      .joins(:time_type)
-                                      .where(time_types: {is_work: true})
+  scope :effective_working_time, -> do
+    where(time_spanable_type: TimeEntry.to_s)
+      .joins(:time_type)
+      .where(time_types: {is_work: true})
+  end
 
-  scope :adjustments,               joins(:time_type)
-                                      .where(time_spanable_type: Adjustment.model_name)
-                                      .exclude_vacation_adjustments
+  scope :adjustments, -> do
+    joins(:time_type)
+      .where(time_spanable_type: Adjustment.to_s)
+      .exclude_vacation_adjustments
+  end
 
-  scope :exclude_adjustments,       where('time_spanable_type != ?', Adjustment.model_name)
+  scope :exclude_adjustments, -> do
+    where.not(time_spanable_type: Adjustment.to_s)
+  end
 
-  scope :vacation_adjustments, joins(:time_type)
-                                 .where(time_types: {is_vacation: true})
-                                 .where(time_spanable_type: Adjustment.model_name)
+  scope :vacation_adjustments, -> do
+    joins(:time_type)
+      .where(time_types: {is_vacation: true})
+      .where(time_spanable_type: Adjustment.to_s)
+  end
 
-  scope :vacation, joins(:time_type)
-                     .where(time_types: {is_vacation: true})
-                     .exclude_vacation_adjustments
+  scope :vacation, -> do
+    joins(:time_type)
+      .where(time_types: {is_vacation: true})
+      .exclude_vacation_adjustments
+  end
 
   def self.duration_in_work_day_sum_per_user_and_time_type
     group(:user_id).group(:time_type_id).sum(:duration_in_work_days)

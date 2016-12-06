@@ -22,10 +22,10 @@ class Absence < ActiveRecord::Base
   has_many :time_spans, as: :time_spanable, dependent: :destroy
   has_one :schedule, class_name: :AbsenceSchedule, dependent: :destroy
 
-  default_scope order(:start_date)
-  scope :work, joins: :time_type, conditions: ['is_work = ?', true]
-  scope :absence, joins: :time_type, conditions: ['is_work = ?', false]
-  scope :vacation, joins: :time_type, conditions: ['is_vacation = ?', true]
+  default_scope { order(:start_date) }
+  scope :work, -> { joins(:time_tye).where(time_type: { is_work: true })}
+  scope :absence, -> { joins(:time_type).where(time_type: { is_work: false })}
+  scope :vacation, -> { joins(:time_type).where(time_type: { is_vacation: true }) }
 
   attr_accessible :start_date, :end_date, :first_half_day, :second_half_day, :daypart
   attr_accessible :schedule, :schedule_attributes
@@ -51,12 +51,12 @@ class Absence < ActiveRecord::Base
 
   def self.recurring_entries
     # inner join
-    scoped.joins(:schedule).where(absence_schedules: {active: true})
+    joins(:schedule).where(absence_schedules: {active: true})
   end
 
   def self.nonrecurring_entries
     # left outer join
-    scoped.includes(:schedule).where(absence_schedules: {active: false})
+    includes(:schedule).where(absence_schedules: {active: false})
   end
 
   def self.recurring_entries_in_range(range)
@@ -229,4 +229,3 @@ class Absence < ActiveRecord::Base
     end.compact.uniq
   end
 end
-

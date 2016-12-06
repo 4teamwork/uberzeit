@@ -1,4 +1,4 @@
-class API::User::Validators::TimeTypeForTimer < Grape::Validations::Validator
+class API::User::Validators::TimeTypeForTimer < Grape::Validations::Base
   def validate_param!(attr_name, params)
     time_type = params[attr_name].blank? ? nil : TimeType.find(params[attr_name])
     if time_type.nil? || !time_type.is_work?

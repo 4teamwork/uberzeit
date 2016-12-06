@@ -9,7 +9,7 @@ class TimeSheet
     bonus(date_or_range) + working_time_total(date_or_range) - planned_working_time(date_or_range)
   end
 
-  def bonus(date_or_range, time_types = TimeType.scoped)
+  def bonus(date_or_range, time_types = TimeType.all)
     user.time_spans.with_date(date_or_range).where(time_type_id: time_types).sum(:duration_bonus)
   end
 

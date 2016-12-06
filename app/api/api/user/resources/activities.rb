@@ -4,7 +4,7 @@ class API::User::Resources::Activities < Grape::API
   resource :activities do
 
     before do
-      @activities = Activity.scoped
+      @activities = Activity.all
       @activities = @activities.includes(:activity_type)
       @activities = @activities.includes(params[:embed]) if params[:embed]
     end
@@ -88,8 +88,7 @@ class API::User::Resources::Activities < Grape::API
     namespace :latest do
       desc 'Retrieves the latest updated/created activity by the current user'
       get do
-        present @activities.unscoped
-                           .where(user_id: current_user.id)
+        present @activities.where(user_id: current_user.id)
                            .order('updated_at DESC')
                            .first, with: API::User::Entities::Activity, embed: params[:embed]
       end

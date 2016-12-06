@@ -20,12 +20,12 @@ class Adjustment < ActiveRecord::Base
 
   acts_as_paranoid
 
-  default_scope order(:date)
+  default_scope { order(:date) }
 
   scope_date :date
 
-  scope :exclude_vacation, joins: :time_type, conditions: ['is_vacation = ?', false]
-  scope :vacation, joins: :time_type, conditions: ['is_vacation = ?', true]
+  scope :exclude_vacation, -> { joins(:time_type).where(time_type: { is_vacation: false }) }
+  scope :vacation, -> { joins(:time_type).where(time_type: { is_vacation: true }) }
 
   belongs_to :user
   belongs_to :time_type

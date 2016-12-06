@@ -34,8 +34,8 @@ class Reports::AbsenceController < ApplicationController
   private
 
   def set_info
-    @requested_teams = params[:team_ids].present? ? Team.where(id: params[:team_ids].map(&:to_i)) : Team.scoped
-    @users = (@requested_teams.any? ? User.in_teams(@requested_teams) : User.scoped).only_active
+    @requested_teams = params[:team_ids].present? ? Team.where(id: params[:team_ids].map(&:to_i)) : Team.all
+    @users = (@requested_teams.any? ? User.in_teams(@requested_teams) : User.all).only_active
     @teams = Team.all
     @year = params[:year].to_i if params[:year].present?
     @month = params[:month].to_i if params[:month].present?

@@ -12,6 +12,7 @@ $ ->
       afterInit: (e) ->
         e.data('popover').popover.click (event) ->
           unless $(event.target).is('a')
+            return
             event.stopPropagation()
     .popover('show')
 

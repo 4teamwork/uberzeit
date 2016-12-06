@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   acts_as_paranoid
   validates_as_paranoid
 
-  default_scope order('users.name')
+  default_scope { order('users.name') }
 
   attr_accessible :email, :name, :birthday, :given_name, :team_ids, :password, :password_confirmation, :auth_source, :active
 

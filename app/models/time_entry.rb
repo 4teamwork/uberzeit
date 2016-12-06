@@ -17,7 +17,7 @@ class TimeEntry < ActiveRecord::Base
 
   acts_as_paranoid
 
-  default_scope order(:starts)
+  default_scope { order(:starts) }
 
   belongs_to :user
   belongs_to :time_type, with_deleted: true
@@ -36,8 +36,8 @@ class TimeEntry < ActiveRecord::Base
   scope_date :starts
   scope_date :ends
 
-  scope :timers_only, where(ends: nil)
-  scope :except_timers, where('time_entries.ends IS NOT NULL')
+  scope :timers_only, -> { where(ends: nil) }
+  scope :except_timers, -> { where('time_entries.ends IS NOT NULL') }
 
   before_validation :round_times
   after_save :update_or_create_time_span

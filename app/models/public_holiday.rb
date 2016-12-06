@@ -19,7 +19,7 @@ class PublicHoliday < ActiveRecord::Base
 
   acts_as_paranoid
 
-  default_scope order(:date)
+  default_scope { order(:date) }
 
   attr_accessible :first_half_day, :name, :second_half_day, :date, :daypart
 

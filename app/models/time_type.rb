@@ -21,10 +21,10 @@ class TimeType < ActiveRecord::Base
   acts_as_paranoid
   validates_as_paranoid
 
-  scope :absence,   where(is_work: false)
-  scope :work,      where(is_work: true)
+  scope :absence, -> { where(is_work: false) }
+  scope :work, -> { where(is_work: true) }
 
-  default_scope order(:name)
+  default_scope { order(:name) }
 
   attr_accessible :is_vacation, :is_work, :name, :absence
   attr_accessible :bonus_calculator, :exclude_from_calculation, :icon, :color_index
@@ -42,7 +42,7 @@ class TimeType < ActiveRecord::Base
 
   def self.vacation
     # there can be only one vacation time type
-    scoped.where(is_vacation: true).first
+    where(is_vacation: true).first
   end
 
   def to_s

@@ -32,7 +32,7 @@ class Employment < ActiveRecord::Base
   before_validation :set_default_values, unless: :persisted?
   after_save :update_days
 
-  default_scope order(:start_date)
+  default_scope { order(:start_date) }
 
   scope :when, lambda { |date|
     raise "Must be a date" unless date.kind_of?(Date)

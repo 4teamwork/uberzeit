@@ -2,7 +2,7 @@ Uberzeit::Application.routes.draw do
 
   year_month_team_id_constraints = {year: /\d+/, month: /\d+/, team_id: /\d+/}
 
-  root :to => 'sessions#new'
+  root to: 'sessions#new'
 
 
   # session stuff
@@ -10,9 +10,9 @@ Uberzeit::Application.routes.draw do
     put '/language', action: :change_language
   end
 
-  match '/auth/:provider/callback', to: 'sessions#create'
-  match '/auth/failure', to: 'sessions#failure'
-  match '/logout', to: 'sessions#destroy', as: 'logout'
+  post '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure', to: 'sessions#failure'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
 
 
   # users scope
