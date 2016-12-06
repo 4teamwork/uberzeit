@@ -18,7 +18,7 @@
 
   <div class="row">
     <div class="small-12 columns">
-      nine.ch - from dev-team with <i class="icon-heart api-show-token"></i>
+      nine.ch - from dev-team with <%= fa_icon('heart', class: 'api-show-token') %>
       <div class='api-token-popup'>
         <span class='token'>
           <p>This is a gift...</p>
@@ -26,7 +26,7 @@
           <p>Your API Token is</p>
           <p><strong><%= current_user && current_user.authentication_token %></strong></p>
         </span>
-        <i class="icon-heart"></i>
+        <%= fa_icon('heart') %>
       </div>
     </div>
   </div>

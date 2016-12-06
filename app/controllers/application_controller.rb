@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :ensure_logged_in
 
-  layout proc { |controller| controller.request.xhr? ? nil : 'application' }
+  layout -> (controller) do
+    controller.request.xhr? ? false : 'application'
+  end
 
   private
 

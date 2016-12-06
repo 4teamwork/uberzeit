@@ -1,10 +1,9 @@
 <div class="row">
   <div class="large-12 columns">
-    <i class="icon-flag public-holiday-color"></i>
+    <%= fa_icon('flag', class: 'public-holiday-color') %>
     <%= public_holiday.name %>
     <div class="right">
       <%= part_of_day(public_holiday) %>
     </div>
   </div>
 </div>
-

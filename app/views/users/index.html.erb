@@ -2,7 +2,7 @@
   <div class="small-12 columns">
     <h1>
       <%= User.model_name.human %>
-      <%= link_to icon('plus') + ' ' + t('.new_user'), new_user_path, class: 'button right' %>
+      <%= link_to fa_icon('plus') + ' ' + t('.new_user'), new_user_path, class: 'button right' %>
     </h1>
 
     <table class="nice small-12 edit destroy">
@@ -22,24 +22,24 @@
             <% end %>
           </td>
           <td class="action">
-            <%= link_to icon('group'), user_roles_path(user), { title: t('activerecord.models.role', count: 2) } %>
+            <%= link_to fa_icon('group'), user_roles_path(user), { title: t('activerecord.models.role', count: 2) } %>
           </td>
           <td class="action">
-            <%= link_to icon('file-text'), user_employments_path(user), { title: t('activerecord.models.employment', count: 2) } %>
+            <%= link_to fa_icon('file-text'), user_employments_path(user), { title: t('activerecord.models.employment', count: 2) } %>
           </td>
           <% if user.editable? %>
             <td class="action">
-              <%= link_to icon('edit'), edit_user_path(user), { title: t('global.actions.edit') } %>
+              <%= link_to fa_icon('edit'), edit_user_path(user), { title: t('global.actions.edit') } %>
             </td>
             <td class="action">
-              <%= link_to icon('trash'), user, { method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') } %>
+              <%= link_to fa_icon('trash'), user, { method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') } %>
             </td>
           <% else %>
             <td class="action disabled">
-              <%= icon('edit') %>
+              <%= fa_icon('edit') %>
             </td>
             <td class="action disabled">
-              <%= icon('trash') %>
+              <%= fa_icon('trash') %>
             </td>
           <% end %>
         </tr>

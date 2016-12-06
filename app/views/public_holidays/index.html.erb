@@ -2,9 +2,9 @@
   <div class="small-12 columns">
     <h1>
       <%= t '.title', year: @year %>
-      <%= link_to icon('caret-left'), public_holidays_path(year: @year - 1) %>
-      <%= link_to icon('caret-right'), public_holidays_path(year: @year + 1) %>
-      <%= link_to icon('plus') + ' ' + t('.new_public_holiday'), new_public_holiday_path, class: 'button right' %></h3>
+      <%= link_to fa_icon('caret-left'), public_holidays_path(year: @year - 1) %>
+      <%= link_to fa_icon('caret-right'), public_holidays_path(year: @year + 1) %>
+      <%= link_to fa_icon('plus') + ' ' + t('.new_public_holiday'), new_public_holiday_path, class: 'button right' %></h3>
     </h1>
 
     <table class="nice small-12 edit destroy">
@@ -24,10 +24,10 @@
             </td>
             <td><%= public_holiday.name %></td>
             <td>
-              <%= link_to icon('edit'), edit_public_holiday_path(public_holiday), { title: t('global.actions.edit') } %>
+              <%= link_to fa_icon('edit'), edit_public_holiday_path(public_holiday), { title: t('global.actions.edit') } %>
             </td>
             <td>
-              <%= link_to icon('trash'), public_holiday, method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %>
+              <%= link_to fa_icon('trash'), public_holiday, method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %>
             </td>
           </tr>
         <% end %>

@@ -2,7 +2,7 @@
   <div class="small-12 columns">
     <h1>
       <%= t '.title' %>
-      <%= link_to icon('plus') + ' ' + t('.new'), new_activity_type_path, class: 'button right' %></h3>
+      <%= link_to fa_icon('plus') + ' ' + t('.new'), new_activity_type_path, class: 'button right' %></h3>
     </h1>
 
     <table class="nice small-12 edit destroy">
@@ -19,12 +19,11 @@
           <tr>
             <td><%= activity_type.name %></td>
             <td><%= activity_type.activities.count %></td>
-            <td><%= link_to icon('edit'), edit_activity_type_path(activity_type), { title: t('global.actions.edit') } %></td>
-            <td><%= link_to icon('trash'), activity_type, method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %></td>
+            <td><%= link_to fa_icon('edit'), edit_activity_type_path(activity_type), { title: t('global.actions.edit') } %></td>
+            <td><%= link_to fa_icon('trash'), activity_type, method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
-

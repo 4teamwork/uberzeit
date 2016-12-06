@@ -28,7 +28,7 @@
     <% unless tooltip_for_end_time.blank? %>
       <span class="has-tip duration" data-tooltip="<%= tooltip_for_end_time %>">
     <% else %>
-      <span class="duration">   
+      <span class="duration">
     <% end %>
       <%= end_time %>
     </span>
@@ -42,7 +42,7 @@
   <div class="large-2 columns">
     <div class="right">
       <a href='#' class="edit remote-reveal" data-reveal-id="time-modal" data-reveal-url="<%= edit_user_time_entry_path(@user, time_entry) %>">
-        <%= icon(:edit) %>
+        <%= fa_icon(:edit) %>
       </a>
       <%= format_duration(time_span.duration) %>
     </div>

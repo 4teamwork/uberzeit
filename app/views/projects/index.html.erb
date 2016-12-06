@@ -2,7 +2,7 @@
   <div class="small-12 columns">
     <h1>
       <%= t '.title' %>
-      <%= link_to icon('plus') + ' ' + t('.new'), new_project_path, class: 'button right' %></h3>
+      <%= link_to fa_icon('plus') + ' ' + t('.new'), new_project_path, class: 'button right' %></h3>
     </h1>
 
     <% @projects.each do |customer, projects| %>
@@ -14,8 +14,8 @@
           <% projects.each do |project| %>
             <tr>
               <td><%= project.name %></td>
-              <td><%= link_to icon('edit'), edit_project_path(project), { title: t('global.actions.edit') } %></td>
-              <td><%= link_to icon('trash'), project, method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %></td>
+              <td><%= link_to fa_icon('edit'), edit_project_path(project), { title: t('global.actions.edit') } %></td>
+              <td><%= link_to fa_icon('trash'), project, method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %></td>
             </tr>
           <% end %>
         </tbody>
@@ -23,4 +23,3 @@
     <% end %>
   </div>
 </div>
-

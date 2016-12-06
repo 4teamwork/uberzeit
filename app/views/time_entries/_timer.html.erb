@@ -28,12 +28,12 @@
       </a>
       <small>
         <span class="timer-overall-label hidden has-tip" data-tooltip="<%= t '.exceeds-day' %>">
-          <%= t '.timer' %> 
+          <%= t '.timer' %>
           <span class="timer-overall duration" data-timer-id="<%= timer.id %>"></span>
         </span>
       </small>
       <a href='#' class="edit remote-reveal" data-reveal-id="time-modal" data-reveal-url="<%= edit_user_time_entry_path(@user, timer) %>">
-        <%= icon(:edit) %>
+        <%= fa_icon(:edit) %>
       </a>
       <span class="timer-current duration" data-timer-id="<%= timer.id %>"></span>
     </div>

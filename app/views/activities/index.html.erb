@@ -30,10 +30,10 @@
                   </div>
                   <div class="large-2 columns">
                     <div class="right">
-                      <%= activity.reviewed? ? icon('lock') : '' %>
+                      <%= activity.reviewed? ? fa_icon('lock') : '' %>
                       <% if can? :update, activity %>
                         <a href='#' class="edit remote-reveal" data-reveal-id="activity-modal" data-reveal-url="<%= edit_user_activity_path(@user, activity) %>">
-                          <%= icon(:edit) %>
+                          <%= fa_icon(:edit) %>
                         </a>
                       <% end %>
                       <%= format_duration(activity.duration) %>

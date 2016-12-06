@@ -2,9 +2,9 @@
   <div class="small-12 columns">
     <h1>
       <%= t '.title', year: @year %>
-      <%= link_to icon('caret-left'), adjustments_path(year: @year - 1) %>
-      <%= link_to icon('caret-right'), adjustments_path(year: @year + 1) %>
-      <%= link_to icon('plus') + ' ' + t('.new_adjustment'), new_adjustment_path, class: 'button right' %></h3>
+      <%= link_to fa_icon('caret-left'), adjustments_path(year: @year - 1) %>
+      <%= link_to fa_icon('caret-right'), adjustments_path(year: @year + 1) %>
+      <%= link_to fa_icon('plus') + ' ' + t('.new_adjustment'), new_adjustment_path, class: 'button right' %></h3>
     </h1>
 
     <table class="nice small-12 edit destroy">
@@ -34,8 +34,8 @@
 
             </td>
             <td><%= adjustment.label %></td>
-            <td><%= link_to icon('edit'), edit_adjustment_path(adjustment), { title: t('global.actions.edit') } %></td>
-            <td><%= link_to icon('trash'), adjustment, method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %></td>
+            <td><%= link_to fa_icon('edit'), edit_adjustment_path(adjustment), { title: t('global.actions.edit') } %></td>
+            <td><%= link_to fa_icon('trash'), adjustment, method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %></td>
           </tr>
         <% end %>
       </tbody>

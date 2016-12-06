@@ -16,7 +16,10 @@ class Day < ActiveRecord::Base
 
   validates_presence_of :user, :planned_working_time, :date
 
-  scope :in, lambda { |range| date_range = range.to_range.to_date_range; { conditions: ['(date <= ? AND date >= ?)', date_range.max, date_range.min] } }
+  scope :in, -> (range) do
+    date_range = range.to_range.to_date_range
+    where('(date <= ? AND date >= ?)', date_range.max, date_range.min)
+  end
 
   def self.create_or_regenerate_days_for_user_and_range!(user, range)
     GeneratePlannedWorkingTimeForUserAndDates.new(user, range).run

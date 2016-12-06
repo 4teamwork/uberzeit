@@ -11,7 +11,7 @@ $(document).on 'ajax:complete', '.stop-timer', (xhr, status) ->
 
 $(document).on 'click', '.stop-timer', ->
   unless $('.stop-timer').hasClass 'disabled'
-    $('.stop-timer i').removeClass('icon-spin')
+    $('.stop-timer i').removeClass('fa-spin')
 
 $(document).on 'click', '.unhider', ->
   $('.' + $(this).data('hide-class')).hide()

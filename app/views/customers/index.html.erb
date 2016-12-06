@@ -2,7 +2,7 @@
   <div class="small-12 columns">
     <h1>
       <%= Customer.model_name.human(count: @customers.count) %>
-      <%= link_to icon('plus') + ' ' + t('.new_customer'), new_customer_path, class: 'button right' %>
+      <%= link_to fa_icon('plus') + ' ' + t('.new_customer'), new_customer_path, class: 'button right' %>
     </h1>
 
     <table class="nice small-12 edit destroy">
@@ -13,10 +13,10 @@
             <strong><%= customer %></strong>
           </td>
           <td>
-            <%= link_to icon('edit'), edit_customer_path(customer), { title: t('global.actions.edit') } %>
+            <%= link_to fa_icon('edit'), edit_customer_path(customer), { title: t('global.actions.edit') } %>
           </td>
           <td>
-            <%= link_to icon('trash'), customer, method: :delete, confirm: t('.confirm_delete', customer: customer), title: t('global.actions.delete') %>
+            <%= link_to fa_icon('trash'), customer, method: :delete, confirm: t('.confirm_delete', customer: customer), title: t('global.actions.delete') %>
           </td>
         </tr>
         <% end %>

@@ -12,9 +12,7 @@ module TimeTypesHelper
     content_tag(:ul, class: 'list-of-icons' ) do
       ICONS_AVAILABLE.collect do |icon_name|
         content_tag(:li) do
-          css_classes = ["icon","icon-#{icon_name}"]
-          css_classes << ["active"] if icon_name == active
-          content_tag(:i, '', :'data-icon' => icon_name, class: css_classes)
+          fa_icon(icon_name, class: ('active' if icon_name == active))
         end
       end.join.html_safe
     end

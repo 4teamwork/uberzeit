@@ -46,7 +46,7 @@ $ ->
       update_activity_sum element
 
   $('input[name=activity_toggle]').change ->
-    ajax_indicator = $('<i class="icon-spinner icon-spin">')
+    ajax_indicator = $('<i class="fa fa-spinner fa-spin">')
     $(this).after(ajax_indicator)
 
     data = {}
@@ -54,7 +54,7 @@ $ ->
 
     update_activity $(this).data('action'), $(this).data('method'), data, =>
       ajax_indicator.replaceWith ->
-        $('<i class="icon-ok green-tick">').delay(ACTIVITY_FADE_TIME).fadeOut()
+        $('<i class="fa fa-check green-tick">').delay(ACTIVITY_FADE_TIME).fadeOut()
 
     update_activity_sums()
 
@@ -68,7 +68,7 @@ $ ->
         $(element).closest('tr').fadeTo(ACTIVITY_FADE_TIME, ACTIVITY_FADE_TO_OPACITY)
 
     section = $(this).closest('section')
-    section.find('.customer-status').append('<i class="icon-ok green-tick">')
+    section.find('.customer-status').append('<i class="fa fa-check green-tick">')
     section.find('.customer-title').fadeTo(ACTIVITY_FADE_TIME, ACTIVITY_FADE_TO_OPACITY)
 
     # select next customer

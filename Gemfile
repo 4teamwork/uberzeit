@@ -7,18 +7,14 @@ gem 'rails', '~> 4.2.7'
 
 gem 'pg'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'jquery-rails'
-  gem 'compass-rails'
-  gem 'uglifier'
-  gem 'zurb-foundation', '4.2.2'
-  gem 'font-awesome-rails'
-  gem 'foundation_rails_helper'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'jquery-rails'
+gem 'compass-rails'
+gem 'uglifier'
+gem 'zurb-foundation', '4.2.2'
+gem 'font-awesome-rails'
+gem 'foundation_rails_helper'
 
 # Authentication
 gem 'omniauth'

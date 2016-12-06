@@ -17,7 +17,7 @@
               <%= @absences[weekday].map{ |absence| icon_for_time_type(absence.time_type) }.join.html_safe %>
             <% end %>
             <% if @public_holidays[weekday] %>
-              <i class="icon-flag public-holiday-color" title="<%= @public_holidays[weekday].name %>"></i>
+              <%= fa_icon('flag', class: 'public-holiday-color', title: @public_holidays[weekday].name) %>
             <% end %>
           </div>
           <% if @public_holidays[weekday] && @public_holidays[weekday].whole_day? %>

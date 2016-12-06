@@ -13,15 +13,15 @@
 
           <div class="table-cell">
             <% if @date + 1.week <= Date.today %>
-              <a href="<%= url_for(date: @date + 1.week) %>" class="next"><i class="icon-caret-right"></i></a>
+              <%= link_to fa_icon('caret-right'), url_for(date: @date + 1.week), class: 'next' %>
             <% else %>
-              <span class="next"><i class="icon-caret-right"></i></span>
+              <span class="next"><%= fa_icon 'caret-right' %></span>
             <% end %>
           </div>
           <div class="table-cell">
-            <a href="<%= url_for(date: @date - 1.week) %>" class="previous"><i class="icon-caret-left"></i></a>
-          </div>
+            <%= link_to fa_icon('caret-left'), url_for(date: @date - 1.week), class: 'previous' %>
 
+          </div>
         </div>
       </div>
     </div>

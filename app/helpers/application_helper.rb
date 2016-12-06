@@ -92,7 +92,7 @@ module ApplicationHelper
   def icon_for_time_type(time_type)
     color_index = color_index_of_time_type(time_type)
     icon = icon_class_for_time_type(time_type)
-    content_tag(:i, '', class: "event-color#{color_index} #{icon}")
+    fa_icon(icon, class: "event-color#{color_index}")
   end
 
   def show_user_select?

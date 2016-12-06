@@ -2,7 +2,7 @@
   <div class="large-12 columns">
     <h1>
       <%= t '.title' %>
-      <%= link_to icon('plus') + ' ' + t('.new_role'), new_user_role_path, class: 'button right' %>
+      <%= link_to fa_icon('plus') + ' ' + t('.new_role'), new_user_role_path, class: 'button right' %>
     </h1>
 
     <table class="nice small-12 destroy">
@@ -27,7 +27,7 @@
             <% end %>
           </td>
           <td>
-            <%= link_to icon('trash'), user_role_path(@user, role), method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %>
+            <%= link_to fa_icon('trash'), user_role_path(@user, role), method: :delete, confirm: t('.confirm_delete'), title: t('global.actions.delete') %>
           </td>
         </tr>
         <% end %>
@@ -35,4 +35,3 @@
     </table>
   </div>
 </div>
-
