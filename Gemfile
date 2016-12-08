@@ -52,7 +52,7 @@ gem 'thin'
 
 # API
 # http://www.youtube.com/watch?v=mqgiEQXGetI
-gem 'grape'
+gem 'grape', '~> 0.6'
 gem 'grape-entity'
 gem 'grape-swagger'
 gem 'warden'

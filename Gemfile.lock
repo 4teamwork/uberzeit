@@ -392,7 +392,7 @@ DEPENDENCIES
   font-awesome-rails
   foreman
   foundation_rails_helper
-  grape
+  grape (~> 0.6)
   grape-entity
   grape-swagger
   guard-spring
