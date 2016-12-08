@@ -112,7 +112,6 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
-    docile (1.1.5)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
@@ -327,13 +326,6 @@ GEM
     shellany (0.0.1)
     simple-navigation (4.0.3)
       activesupport (>= 2.3.2)
-    simplecov (0.12.0)
-      docile (~> 1.1.0)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.0)
-    simplecov-rcov (0.2.3)
-      simplecov (>= 0.4.1)
     slop (3.6.0)
     spring (2.0.0)
       activesupport (>= 4.2)
@@ -428,8 +420,6 @@ DEPENDENCIES
   sass-rails
   selenium-webdriver
   simple-navigation
-  simplecov
-  simplecov-rcov
   spring-commands-rspec
   sqlite3
   thin

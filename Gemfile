@@ -74,8 +74,6 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'ci_reporter'
   gem 'brakeman'
-  gem 'simplecov', require: false
-  gem 'simplecov-rcov', require: false
   gem 'factory_girl_rails', require: false
   gem 'faker'
   gem 'capybara'

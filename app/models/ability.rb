@@ -69,7 +69,7 @@ class Ability
   end
 
   def manageable_user_ids(user)
-    @manageable_user_ids ||= User.joins(:teams).where(teams: {id: Team.with_role(:team_leader, user)}).pluck(:id)
+    @manageable_user_ids ||= User.joins(:teams).where(teams: {id: Team.with_role(:team_leader, user).pluck(:id)}).pluck(:id)
   end
 
   def activities_enabled?
