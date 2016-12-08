@@ -83,9 +83,9 @@ module ApplicationHelper
 
   def icon_class_for_time_type(time_type)
     if time_type.icon.blank?
-      'icon-sign-blank'
+      'sign-blank'
     else
-      "icon-#{time_type.icon}"
+      time_type.icon
     end
   end
 
