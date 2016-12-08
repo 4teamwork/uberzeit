@@ -102,13 +102,13 @@ describe Reports::Activities::DetailedController do
 
         it 'assigns the subtotals' do
           get :index, start_date: '2010-01-01', end_date: '2010-01-31', customer: swag_ag.display_name
-          assigns(:subtotals).values.first.should == { "billable" => 3600, "not_billable" => 7200, "billed" => 0 }
-          assigns(:subtotals).values.second.should == { "billable" => 3300, "not_billable" => 0, "billed" => 3300 }
+          assigns(:subtotals).values.first.should == { billable: 3600, not_billable: 7200, billed: 0 }
+          assigns(:subtotals).values.second.should == { billable: 3300, not_billable: 0, billed: 3300 }
         end
 
         it 'assigns the totals' do
           get :index, start_date: '2010-01-01', end_date: '2010-01-31', customer: swag_ag.display_name
-          assigns(:totals).should == { "billable" => 6900, "not_billable" => 7200, "billed" => 3300 }
+          assigns(:totals).should == { billable: 6900, not_billable: 7200, billed: 3300 }
         end
       end
     end
