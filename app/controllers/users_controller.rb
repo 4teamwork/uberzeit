@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to user_employments_path(@user), flash: flash
+    redirect_to user_employments_path(@user)
   end
 
   def edit

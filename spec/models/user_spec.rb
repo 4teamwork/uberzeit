@@ -98,7 +98,7 @@ describe User do
     end
 
     it 'requries a non-empty password' do
-      user.password = user.password_confirmation = nil
+      user.password = user.password_confirmation = ''
       user.should_not be_valid
     end
 

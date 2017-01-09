@@ -1,0 +1,8 @@
+cp config/database.yml.example config/database.yml
+cp config/uberzeit.yml.example config/uberzeit.yml
+bundle install --without development --path=~/.bundle
+bin/rake db:schema:load_if_ruby db:structure:load_if_sql
+bin/rspec
+test_exit_code=$?
+bin/rake db:drop
+exit "$test_exit_code"

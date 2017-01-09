@@ -11,7 +11,7 @@ class API::User::Resources::Activities < Grape::API
 
     desc 'Lists all activities'
     params do
-      optional :embed, type: Array, includes: %w[user project]
+      optional :embed, type: Array[String], coerce_with: ->(val) { val.split(/\s+/) }, includes: %w[user project]
     end
     get do
       present @activities, with: API::User::Entities::Activity, embed: params[:embed]
@@ -20,7 +20,7 @@ class API::User::Resources::Activities < Grape::API
     desc 'Deletes an activity'
     params do
       requires :id, type: Integer, desc: 'Activity ID.'
-      optional :embed, type: Array, includes: %w[user project]
+      optional :embed, type: Array[String], coerce_with: ->(val) { val.split(/\s+/) }, includes: %w[user project]
     end
     delete ':id' do
       activity = Activity.find params[:id]
@@ -43,7 +43,7 @@ class API::User::Resources::Activities < Grape::API
       optional :otrs_ticket_id, type: Integer
       optional :billable, type: Boolean, desc: 'Mark as billable'
 
-      optional :embed, type: Array, includes: %w[user project]
+      optional :embed, type: Array[String], coerce_with: ->(val) { val.split(/\s+/) }, includes: %w[user project]
     end
     post do
 
@@ -88,9 +88,7 @@ class API::User::Resources::Activities < Grape::API
     namespace :latest do
       desc 'Retrieves the latest updated/created activity by the current user'
       get do
-        present @activities.where(user_id: current_user.id)
-                           .order('updated_at DESC')
-                           .first, with: API::User::Entities::Activity, embed: params[:embed]
+        present @activities.latest, with: API::User::Entities::Activity, embed: params[:embed]
       end
     end
   end

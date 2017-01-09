@@ -43,25 +43,25 @@ describe API::User::Resources::Timer do
       it 'validates the presence of time type' do
         post '/api/timer', { }
         response.status.should eq(422)
-        json['errors'].should include('time_type_id')
+        json['errors'].keys.first.should include('time_type_id')
       end
 
       it 'makes sure that the supplied time type is not an absence time type' do
         post '/api/timer', { time_type_id: TEST_TIME_TYPES[:vacation].id }
         response.status.should eq(422)
-        json['errors'].should include('time_type_id')
+        json['errors'].keys.first.should include('time_type_id')
       end
 
       it 'validates the date' do
         post '/api/timer', { time_type_id: TEST_TIME_TYPES[:work].id, date: '20.07.1986' }
         response.status.should eq(422)
-        json['errors'].should include('date')
+        json['errors'].keys.first.should include('date')
       end
 
       it 'validates the time' do
         post '/api/timer', { time_type_id: TEST_TIME_TYPES[:work].id, start: 'Around 5 o\'clock' }
         response.status.should eq(422)
-        json['errors'].should include('start')
+        json['errors'].keys.first.should include('start')
       end
     end
   end

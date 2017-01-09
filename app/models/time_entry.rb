@@ -45,7 +45,7 @@ class TimeEntry < ActiveRecord::Base
 
   def self.entries_in_range(range)
     time_range = range.to_time_range
-    find(:all, conditions: ['(starts < ? AND ends > ?)', time_range.max, time_range.min])
+    where('(starts < ? AND ends > ? )', time_range.min, time_range.max)
   end
 
   def self.timers_in_range(range)

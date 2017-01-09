@@ -36,12 +36,12 @@ class Employment < ActiveRecord::Base
 
   scope :when, -> (date) do
     raise "Must be a date" unless date.kind_of?(Date)
-    where("? >= start_date AND (? <= end_date OR end_date IS_NULL)", date, date)
+    where('? >= start_date AND (? <= end_date OR end_date IS NULL)', date, date)
   end
 
-  scope :between, -> (date) do
-    date_range = date.to_date_range;
-    where("start_date <= ? AND (end_date) >= ? OR end_date IS NULL", date_range.min, date_range.max)
+  scope :between, -> (date_range) do
+    date_range = date_range.to_date_range;
+    where("start_date <= ? AND (end_date >= ? OR end_date IS NULL)", date_range.max, date_range.min)
   end
 
   def set_default_values

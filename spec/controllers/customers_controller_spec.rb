@@ -92,7 +92,7 @@ describe CustomersController do
     describe 'GET "index"' do
       it 'assigns the customers to @customers' do
         get :index
-        assigns(:customers).should eq(Customer.all)
+        assigns(:customers).map(&:name).should eq(Customer.pluck(:name))
       end
 
       it 'renders the :index template' do

@@ -48,6 +48,8 @@ describe API::User::Resources::Activities do
         get '/api/activities?embed=user'
       end
 
+
+
       subject { json.first['user'] }
 
       its(['id']) { should be_present }
@@ -61,7 +63,7 @@ describe API::User::Resources::Activities do
       it 'validates the embed parameter' do
         get '/api/activities?embed=babo'
         response.status.should eq(422)
-        json['errors'].should include('embed')
+        json['errors'].to_s.should include('embed')
       end
     end
   end

@@ -28,8 +28,6 @@ class Activity < ActiveRecord::Base
 
   acts_as_paranoid
 
-  default_scope { order(:created_at) }
-
   belongs_to :activity_type, with_deleted: true
   belongs_to :project, with_deleted: true
   belongs_to :user, with_deleted: true
@@ -39,6 +37,7 @@ class Activity < ActiveRecord::Base
   validates_presence_of :user, :activity_type, :date, :duration
   validates_numericality_of :duration, greater_than: 0
 
+  scope :ordered, -> { order(:created_at) }
   scope :by_user, ->(user) { where(user_id: user)}
   scope :by_redmine_ticket, ->(redmine_ticket_id) { where(redmine_ticket_id: redmine_ticket_id) }
   scope :by_otrs_ticket, ->(otrs_ticket_id) { where(otrs_ticket_id: otrs_ticket_id) }
@@ -55,6 +54,10 @@ class Activity < ActiveRecord::Base
 
   def billed?
     !!billed
+  end
+
+  def self.latest
+    order(updated_at: :desc, id: :desc).first
   end
 
   def self.sum_by_activity_type

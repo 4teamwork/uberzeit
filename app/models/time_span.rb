@@ -39,9 +39,10 @@ class TimeSpan < ActiveRecord::Base
   scope :for_user, ->(user) { where(user_id: user) }
 
   scope :exclude_vacation_adjustments, -> do
-    joins(:time_type).
-      where.not(time_spanable_type: Adjustment.to_s,
-                time_types: { is_vacation: true })
+    joins(:time_type)
+      .where('NOT (time_spanable_type = ? AND time_types.is_vacation = ?)',
+             Adjustment.to_s,
+             true)
   end
 
   scope :absences_with_adjustments, -> do
@@ -49,7 +50,9 @@ class TimeSpan < ActiveRecord::Base
       .exclude_vacation_adjustments
   end
 
-  scope :absences, -> { where(time_spanable_type: Absence.to_s) }
+  scope :absences, -> do
+    where(time_spanable_type: Absence.to_s)
+  end
 
   scope :working_time, -> do
     joins(:time_type)

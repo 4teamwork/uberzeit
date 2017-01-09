@@ -52,7 +52,7 @@ gem 'thin'
 
 # API
 # http://www.youtube.com/watch?v=mqgiEQXGetI
-gem 'grape', '~> 0.6'
+gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger'
 gem 'warden'
@@ -68,7 +68,6 @@ gem 'responders'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'mysql2'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
@@ -84,7 +83,8 @@ group :development, :test do
   gem 'annotate'
   gem 'parallel_tests'
   gem 'guard-spring'
-  gem 'selenium-webdriver'
+  gem 'poltergeist'
+  gem 'pry'
 end
 
 group :development do

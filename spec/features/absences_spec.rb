@@ -7,6 +7,7 @@ describe 'having fun with absences' do
   let(:user) { FactoryGirl.create(:admin) }
 
   before do
+    pending "need to setup proper javascript runtime and db truncation"
     Timecop.travel('2013-04-22 12:00:00 +0200')
     login user
   end
@@ -14,6 +15,7 @@ describe 'having fun with absences' do
   it 'adds an absence', js: true do
     visit user_absences_path(user)
     click_on 'Absenz hinzufügen'
+    puts body
     select 'test_vacation', from: 'absence_time_type_id'
     select 'Vormittags', from: 'absence_daypart'
     click_on 'Absenz erstellen'

@@ -27,7 +27,7 @@ class TimeSheet
   end
 
   def remaining_vacation_per(date)
-    first_day_of_year = "#{date.year}-01-01".to_date
+    first_day_of_year = date.beginning_of_year
     total_redeemable_vacation(date.year) - redeemed_vacation(first_day_of_year..date)
   end
 
