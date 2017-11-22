@@ -1,4 +1,5 @@
 require 'active_support/configurable'
+require 'uber_zeit/bonus_calculators'
 
 module UberZeit
   include ActiveSupport::Configurable
