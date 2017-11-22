@@ -23,3 +23,7 @@
 
 /.powenv
 /.env
+
+# Production files
+/public/assets/
+/vendor/bundle/
