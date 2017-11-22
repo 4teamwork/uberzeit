@@ -602,3 +602,11 @@ en:
       previous: '‹'
       next: '›'
       truncate: '…'
+
+  bonus_calculator:
+    ftw_nightly:
+      name: 'Planned night work'
+      description: 'The work is multiplied by 1.25'
+    ftw_sunday:
+      name: 'Planned sunday work'
+      description: 'The work is multiplied by 1.5'

@@ -604,3 +604,11 @@ de:
       previous: '‹'
       next: '›'
       truncate: '…'
+
+  bonus_calculator:
+    ftw_nightly:
+      name: 'Geplante Nachtarbeit'
+      description: 'Die geleistete Arbeitszeit wird zu 125% gutgeschrieben'
+    ftw_sunday:
+      name: 'Geplante Sonntagsarbeit'
+      description: 'Die geleistete Arbeitszeit wird zu 150% gutgeschrieben'
