@@ -10,7 +10,7 @@ Uberzeit::Application.routes.draw do
     put '/language', action: :change_language
   end
 
-  post '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:post, :get]
   get '/auth/failure', to: 'sessions#failure'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
