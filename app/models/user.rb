@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   attr_reader :password
   include ActiveModel::SecurePassword::InstanceMethodsOnActivation
 
-  scope :in_teams, ->(teams) { joins(:teams).where(teams: { id: teams }) }
+  scope :in_teams, ->(teams) {  where Membership.where(team_id: teams).where('user_id = users.id').exists }
   scope :only_active, -> { where(active: true) }
 
   def subordinates
