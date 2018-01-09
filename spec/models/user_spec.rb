@@ -50,7 +50,7 @@ describe User do
   describe '.in_teams' do
     it 'returns all the users which belong to the specified team' do
       user2 = FactoryGirl.create(:user)
-      User.in_teams(user.teams).should eq([user])
+      User.in_teams(user.teams.map(&:id)).should eq([user])
     end
 
     it 'returns all the users which belong to the specified teams' do

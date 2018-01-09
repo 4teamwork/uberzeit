@@ -98,11 +98,6 @@ describe Reports::Activities::FilterController do
           assigns(:sums).should == { "swag ag" => { not_billable: 7200, duration: 7200 },
                                      "yolo inc" => { billable: 2700, duration: 2700 } }
         end
-
-        it 'shows the correct sums grouped by project' do
-          get :index, start_date: '2010-01-01', end_date: '2010-01-31', group_by: 'project'
-          assigns(:sums).should == { "project x" => { not_billable: 7200, duration: 9900, billable: 2700 } }
-        end
       end
     end
   end
