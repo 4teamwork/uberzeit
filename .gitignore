@@ -18,7 +18,6 @@
 # Ignore PlainTask TODO File
 /TODO
 
-/config/database.yml
 /config/uberzeit.yml
 
 /.powenv
