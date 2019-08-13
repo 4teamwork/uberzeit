@@ -72,7 +72,7 @@ module ReportsHelper
   end
 
   def awesome_work_days(duration)
-    work_days = awesome_tag("%g" % duration.to_work_days)
+    work_days = awesome_tag("%.1f" % duration.to_work_days)
     t('.formats.work_days_html', work_days: work_days)
   end
 
