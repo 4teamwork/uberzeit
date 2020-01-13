@@ -18,11 +18,22 @@
         </tr>
       </thead>
       <tbody>
-        <% @users.each do |user| %>
+        <% summary = @users.each_with_object({}) do |user, memo| %>
           <tr>
             <td><%= user %></td>
             <td>
-              <%= render partial: 'reports/shared/tooltip', locals: {time_types: user.time_sheet.effective_working_time_by_type(@range), total: user.time_sheet.effective_working_time_total(@range) } %>
+              <ul style="margin-bottom: 0px">
+                <li><b><%= format_hours(user.time_sheet.effective_working_time_total(@range)) %></b></li>
+                <% user.time_sheet.effective_working_time_by_type(@range).reject { |_, summary| summary == 0 }.each do |time_type_id, summary| %>
+                  <%
+                    memo[TimeType.find(time_type_id).to_s] ||= 0
+                    memo[TimeType.find(time_type_id).to_s] += summary
+                  %>
+                  <% if user.time_sheet.effective_working_time_by_type(@range).reject { |_, summary| summary == 0 }.count > 1 %>
+                    <li style="font-style: italic;"><%= TimeType.find(time_type_id) %>: <%= format_hours(summary) %></li>
+                  <% end %>
+                <% end %>
+              </ul>
             </td>
             <td>
               <%= render partial: 'reports/shared/tooltip', locals: {time_types: user.time_sheet.absences_by_type(@range), total: user.time_sheet.absences_total(@range) } %>
@@ -42,6 +53,19 @@
           </tr>
         <% end %>
       </tbody>
+      <tfoot>
+        <tr>
+          <td>Total</td>
+          <td>
+            <p><%= format_hours(summary.values.sum) %></p>
+            <ul style="margin-bottom: 0px">
+              <% summary.each do |time_type, value| %>
+                <li><%= time_type %>: <%= format_hours(value) %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </div>
