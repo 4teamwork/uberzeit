@@ -318,6 +318,9 @@ de:
         running_overtime: Laufende Überzeit
         target: Sollzeit
         overtime: Überzeit
+        overtime_total:
+          title: Überzeit-Saldo
+          description: 'Gesamt Überzeit-Saldo bis gestern, unabhängig vom oben ausgewählten Zeitfenster.'
         adjustments: Anpassungen
       table:
         title: Arbeitszeit Mitarbeiter

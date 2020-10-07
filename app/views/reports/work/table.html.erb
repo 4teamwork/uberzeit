@@ -15,6 +15,13 @@
           <th><%= t 'reports.work.columns.adjustments' %></th>
           <th><%= t 'reports.work.columns.target' %></th>
           <th><%= t 'reports.work.columns.overtime' %></th>
+          <% if @display_overtime_total %>
+            <th>
+              <span class="has-tip" data-tooltip="<%= t("reports.work.columns.overtime_total.description") %>">
+                <%= t("reports.work.columns.overtime_total.title") %>
+              </span>
+            </th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -45,11 +52,16 @@
               <%= render partial: 'reports/shared/tooltip', locals: {time_types: user.time_sheet.adjustments_by_type(@range), total: user.time_sheet.adjustments_total(@range) } %>
             </td>
             <td>
-              <span><%= format_hours(user.time_sheet.planned_working_time(@range)) %></span>
+              <span><%= format_hours(user.time_sheet.planned_working_time(@original_range)) %></span>
             </td>
             <td>
               <span><%= format_hours(user.time_sheet.overtime(@range)) %></span>
             </td>
+            <% if @display_overtime_total %>
+              <td>
+                <span><%= format_hours(user.time_sheet.overtime(@range_of_year_till_yesterday)) %></span>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

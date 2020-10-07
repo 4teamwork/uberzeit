@@ -318,6 +318,9 @@ en:
         target: 'Target time'
         overtime: 'Extra hours'
         adjustments: 'Adjustments'
+        overtime_total:
+          title: Extra hours balance
+          description: 'Full extra hours balance, independent of the chosen time window above.'
       table:
         title: "Employees' time reporting"
     my_work:
