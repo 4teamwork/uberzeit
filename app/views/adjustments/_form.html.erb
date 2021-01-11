@@ -1,7 +1,7 @@
 <%= form_for(@adjustment) do |f| %>
 <div class="row">
   <div class="small-4 columns">
-    <%= f.select :user_id, User.all.collect { |user| [user, user.id] }, label: Adjustment.human_attribute_name(:user) %>
+    <%= f.select :user_id, User.only_active.collect { |user| [user, user.id] }, label: Adjustment.human_attribute_name(:user) %>
   </div>
 </div>
 <div class="row">
@@ -38,4 +38,3 @@
   </div>
 </div>
 <% end %>
-
