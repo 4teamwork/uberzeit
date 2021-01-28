@@ -9,6 +9,6 @@
         <%= select_month(@month, {prompt: t('.all')}, {name: :month}) %>
       <% end %>
     </div>
-    <div class="small-5 columns end"><%= select_year(@year, {start_year: Date.current.year-1, end_year: Date.current.year+1}, {name: :year}) %></div>
+    <div class="small-5 columns end"><%= select_year(@year, {start_year: (TimeEntry.minimum(:starts)&.year || Date.current.year-1), end_year: Date.current.year+1}, {name: :year}) %></div>
   </div>
 <% end %>
