@@ -15,7 +15,11 @@ class Reports::WorkController < Reports::BaseController
       case
       when today.month == @month && today.year == @year
         @display_overtime_total = true
-        Date.new(@year, @month)...today
+        if today.day == 1
+          Date.new(@year, @month)..today
+        else
+          Date.new(@year, @month)...today
+        end
       when @year == today.year && !@month
         @display_overtime_total = true
         Date.new(@year)...today
